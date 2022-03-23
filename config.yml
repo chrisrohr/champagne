@@ -1,0 +1,4 @@
+logging:
+  level: WARN
+  loggers:
+    org.kiwiproject.champagne: INFO
