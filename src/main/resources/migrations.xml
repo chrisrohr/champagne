@@ -6,4 +6,29 @@
         xsi:schemaLocation="
             http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
 
+    <changeSet id="create_users" author="crohr">
+        <createTable tableName="users">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="createdAt" type="timestamp without time zone" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+            <column name="updatedAt" type="timestamp without time zone" defaultValueComputed="current_timestamp">
+                <constraints nullable="false" />
+            </column>
+            <column name="firstName" type="varchar">
+                <constraints nullable="false" />
+            </column>
+            <column name="lastName" type="varchar">
+                <constraints nullable="false" />
+            </column>
+            <column name="displayName" type="varchar">
+                <constraints nullable="false" />
+            </column>
+            <column name="systemIdentifier" type="varchar">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
