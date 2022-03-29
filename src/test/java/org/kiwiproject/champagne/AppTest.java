@@ -1,5 +1,9 @@
 package org.kiwiproject.champagne;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.kiwiproject.test.dropwizard.app.DropwizardAppTests.registeredResourceClassesOf;
+
+import org.junit.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.kiwiproject.champagne.config.AppConfig;
 import org.kiwiproject.test.dropwizard.app.PostgresAppTestExtension;
@@ -13,4 +17,9 @@ class AppTest {
         new PostgresAppTestExtension<>("migrations.xml", "config-unit-test.yml", App.class);
 
     private static final DropwizardAppExtension<AppConfig> APP = POSTGRES_APP_TEST_EXTENSION.getApp();
+
+    @Test
+    void shouldRegisterResources() {
+        assertThat(registeredResourceClassesOf(APP)).isEmpty();
+    }
 }
