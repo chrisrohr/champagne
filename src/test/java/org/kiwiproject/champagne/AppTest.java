@@ -1,9 +1,10 @@
 package org.kiwiproject.champagne;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.kiwiproject.test.dropwizard.app.DropwizardAppTests.healthCheckNamesOf;
 import static org.kiwiproject.test.dropwizard.app.DropwizardAppTests.registeredResourceClassesOf;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.kiwiproject.champagne.config.AppConfig;
 import org.kiwiproject.test.dropwizard.app.PostgresAppTestExtension;
@@ -20,6 +21,12 @@ class AppTest {
 
     @Test
     void shouldRegisterResources() {
-        assertThat(registeredResourceClassesOf(APP)).isEmpty();
+        // TODO: update this when there are real resources
+        // assertThat(registeredResourceClassesOf(APP)).contains();
+    }
+
+    @Test
+    void shouldRegisterHealthChecks() {
+        assertThat(healthCheckNamesOf(APP)).contains("deadlocks");
     }
 }
