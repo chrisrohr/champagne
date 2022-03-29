@@ -9,13 +9,13 @@ import lombok.Value;
 @Builder
 public class User {
     
-    private long id;
-    private Instant createdAt;
-    private Instant updatedAt;
+    long id;
+    Instant createdAt;
+    Instant updatedAt;
     
-    private String firstName;
-    private String lastName;
-    private String displayName;
-    private String systemIdentifier;
+    String firstName;
+    String lastName;
+    String displayName;
+    String systemIdentifier;
     
 }
