@@ -66,6 +66,14 @@
             <version>4.9.1</version>
         </dependency>
 
+        <!-- Provided dependencies -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- Test dependencies -->
         <dependency>
             <groupId>io.dropwizard</groupId>
