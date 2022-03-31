@@ -7,6 +7,7 @@ import org.kiwiproject.champagne.resource.UserResource;
 import org.kiwiproject.dropwizard.jdbi3.Jdbi3Builders;
 
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.jdbi3.bundles.JdbiExceptionsBundle;
 import io.dropwizard.migrations.MigrationsBundle;
@@ -28,11 +29,15 @@ public class App extends Application<AppConfig> {
                 return config.getDataSourceFactory();
             }
         });
+        bootstrap.addBundle(new AssetsBundle("/ui", "/", "index.html"));
     }
 
     @Override
     public void run(AppConfig configuration, Environment environment) throws Exception {
         
+        // Setting the base url pattern for the REST endpoints to /api as the UI will be on the root path
+        environment.jersey().setUrlPattern("/api/*");
+
         var jdbi = Jdbi3Builders.buildManagedJdbi(environment, configuration.getDataSourceFactory(), new PostgresPlugin());
 
         environment.jersey().register(new UserResource(jdbi.onDemand(UserDao.class)));
