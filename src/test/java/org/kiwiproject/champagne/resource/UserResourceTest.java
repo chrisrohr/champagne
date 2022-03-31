@@ -68,7 +68,7 @@ public class UserResourceTest {
             when(USER_DAO.findPagedUsers(0, 25)).thenReturn(List.of(user));
             when(USER_DAO.countUsers()).thenReturn(1L);
 
-            var response = APP.client().target("/api/users")
+            var response = APP.client().target("/users")
                 .request()
                 .get();
 
@@ -104,7 +104,7 @@ public class UserResourceTest {
             when(USER_DAO.findPagedUsers(40, 10)).thenReturn(List.of(user));
             when(USER_DAO.countUsers()).thenReturn(41L);
 
-            var response = APP.client().target("/api/users")
+            var response = APP.client().target("/users")
                 .queryParam("pageNumber", 5)
                 .queryParam("pageSize", 10)
                 .request()
@@ -141,7 +141,7 @@ public class UserResourceTest {
                 .systemIdentifier("jdoe")
                 .build();
 
-            var response = APP.client().target("/api/users")
+            var response = APP.client().target("/users")
                 .request()
                 .post(Entity.json(user));
 
@@ -155,7 +155,7 @@ public class UserResourceTest {
         void shouldNotAddTheGivenUserWhenValidationErrors() {
             var user = User.builder().build();
 
-            var response = APP.client().target("/api/users")
+            var response = APP.client().target("/users")
                 .request()
                 .post(Entity.json(user));
 
@@ -170,7 +170,7 @@ public class UserResourceTest {
 
         @Test
         void shouldDeleteGivenUser() {
-            var response = APP.client().target("/api/users")
+            var response = APP.client().target("/users")
                 .path("{id}")
                 .resolveTemplate("id", 1)
                 .request()

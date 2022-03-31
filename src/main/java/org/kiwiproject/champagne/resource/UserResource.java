@@ -23,7 +23,7 @@ import org.kiwiproject.champagne.core.User;
 import org.kiwiproject.champagne.jdbi.UserDao;
 import org.kiwiproject.spring.data.KiwiPage;
 
-@Path("/api/users")
+@Path("/users")
 @Produces(APPLICATION_JSON)
 @Consumes(APPLICATION_JSON)
 public class UserResource {
