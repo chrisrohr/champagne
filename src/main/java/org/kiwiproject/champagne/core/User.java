@@ -2,6 +2,8 @@ package org.kiwiproject.champagne.core;
 
 import java.time.Instant;
 
+import javax.validation.constraints.NotBlank;
+
 import lombok.Builder;
 import lombok.Value;
 
@@ -13,9 +15,16 @@ public class User {
     Instant createdAt;
     Instant updatedAt;
     
+    @NotBlank
     String firstName;
+
+    @NotBlank
     String lastName;
+
+    @NotBlank
     String displayName;
+
+    @NotBlank
     String systemIdentifier;
     
 }

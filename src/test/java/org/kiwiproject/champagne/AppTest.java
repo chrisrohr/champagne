@@ -7,6 +7,7 @@ import static org.kiwiproject.test.dropwizard.app.DropwizardAppTests.registeredR
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.kiwiproject.champagne.config.AppConfig;
+import org.kiwiproject.champagne.resource.UserResource;
 import org.kiwiproject.test.dropwizard.app.PostgresAppTestExtension;
 
 import io.dropwizard.testing.junit5.DropwizardAppExtension;
@@ -21,8 +22,9 @@ class AppTest {
 
     @Test
     void shouldRegisterResources() {
-        // TODO: update this when there are real resources
-        // assertThat(registeredResourceClassesOf(APP)).contains();
+        assertThat(registeredResourceClassesOf(APP)).contains(
+            UserResource.class
+        );
     }
 
     @Test
