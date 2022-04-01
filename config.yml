@@ -1,4 +1,10 @@
+database:
+  driverClass: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:5432/champagne
+  user: champagne
+  password:
+
 logging:
-  level: WARN
+  level: INFO
   loggers:
     org.kiwiproject.champagne: INFO
