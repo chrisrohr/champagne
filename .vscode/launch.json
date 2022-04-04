@@ -17,6 +17,15 @@
             "mainClass": "org.kiwiproject.champagne.App",
             "projectName": "champagne",
             "args": "server config.yml"
+        },
+        {
+            "type": "node",
+            "name": "Launch UI dev",
+            "request": "launch",
+            "runtimeExecutable": "yarn",
+            "cwd": "${workspaceFolder}/src/main/js/ui",
+            "runtimeArgs": ["dev"],
+            "port": 8082
         }
     ]
 }

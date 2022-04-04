@@ -1,6 +1,6 @@
 <template>
     <q-page>
-
+        Coming Soon
     </q-page>
 </template>
 
@@ -8,8 +8,11 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-    setup() {
-        
-    },
+    name: 'DashboardPage',
+    data() {
+        return {
+
+        };
+    }
 })
 </script>
