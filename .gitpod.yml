@@ -10,3 +10,5 @@ image:
 ports:
   - port: 8080
     onOpen: open-preview
+  - port: 8082
+    onOpen: open-preview

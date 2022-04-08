@@ -90,7 +90,7 @@ module.exports = configure(function (ctx) {
         type: 'http'
       },
       port: 8082,
-      open: false
+      open: true
     },
 
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-framework
