@@ -11,6 +11,8 @@ import org.kiwiproject.champagne.config.AppConfig;
 import org.kiwiproject.champagne.jdbi.UserDao;
 import org.kiwiproject.champagne.resource.UserResource;
 import org.kiwiproject.dropwizard.jdbi3.Jdbi3Builders;
+import org.kiwiproject.dropwizard.util.config.JacksonConfig;
+import org.kiwiproject.dropwizard.util.jackson.StandardJacksonConfigurations;
 
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
@@ -40,6 +42,8 @@ public class App extends Application<AppConfig> {
 
     @Override
     public void run(AppConfig configuration, Environment environment) throws Exception {
+
+        setupJsonProcessing(environment);
         
         // Setting the base url pattern for the REST endpoints to /api as the UI will be on the root path
         environment.jersey().setUrlPattern("/api/*");
@@ -49,6 +53,17 @@ public class App extends Application<AppConfig> {
         environment.jersey().register(new UserResource(jdbi.onDemand(UserDao.class)));
 
         configureCors(environment);
+    }
+
+    private static void setupJsonProcessing(Environment environment) {
+        var jacksonConfig = JacksonConfig.builder()
+            .ignoreButWarnForUnknownJsonProperties(true)
+            .registerHealthCheckForUnknownJsonProperties(true)
+            .readAndWriteDateTimestampsAsMillis(true)
+            .writeNilJaxbElementsAsNull(true)
+            .build();
+
+            StandardJacksonConfigurations.registerAllStandardJacksonConfigurations(jacksonConfig, environment);
     }
 
     private static void configureCors(Environment environment) {
