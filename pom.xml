@@ -12,6 +12,8 @@
     <name>Champagne</name>
 
     <properties>
+        <dropwizard.version>2.1.0</dropwizard.version>
+
         <maven-compiler-plugin.java.release>17</maven-compiler-plugin.java.release>
         <maven-compiler-plugin.encoding>UTF-8</maven-compiler-plugin.encoding>
 
@@ -37,25 +39,25 @@
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-assets</artifactId>
-            <version>2.0.29</version>
+            <version>${dropwizard.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-core</artifactId>
-            <version>2.0.29</version>
+            <version>${dropwizard.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-jdbi3</artifactId>
-            <version>2.0.29</version>
+            <version>${dropwizard.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-migrations</artifactId>
-            <version>2.0.29</version>
+            <version>${dropwizard.version}</version>
         </dependency>
 
         <dependency>
@@ -100,7 +102,7 @@
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-testing</artifactId>
-            <version>2.0.29</version>
+            <version>${dropwizard.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -176,12 +178,12 @@
                         </goals>
                         <configuration>
                             <outputDirectory>${basedir}/target/classes/ui</outputDirectory>
-                            <resources>          
+                            <resources>
                                 <resource>
                                     <directory>src/main/js/ui/dist/spa</directory>
                                 </resource>
-                            </resources>              
-                        </configuration>            
+                            </resources>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
